@@ -81,8 +81,17 @@ hr {
 }
 
 .shape .bottom button {
+  cursor: pointer;
   padding: 5px 14px;
   color: white;
   background-color: #3939ff;
+}
+
+.shape .bottomQuiz {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+  align-items: center;
+  width: 340px;
 }
 /*# sourceMappingURL=style.css.map */

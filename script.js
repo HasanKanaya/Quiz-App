@@ -21,14 +21,15 @@ let content = `<div class="head">
 <p class="question">${forthP}</p>
 </div>
 <hr />
-<div class="bottom">
-${countQuestion}
+<div class="bottom bottomQuiz">
+${countQuestion} <button class="next" disabled>Next</button>
 </div>`;
 
 // Make the questions using ES6 by making variables inside each p
 
 // Moving to Quiz App
 let hasan = $(content).hide();
+
 continueBtn.addEventListener("click", () => {
   $(".shape hr").fadeOut("normal");
   $(".shape div").fadeOut("normal", function () {
@@ -40,16 +41,20 @@ continueBtn.addEventListener("click", () => {
   }, 600);
 
   // Select Questions
+  let countClicker = 0;
   setTimeout(function () {
     let questions = document.querySelectorAll(".shape .middle p.question");
     questions.forEach((e) => {
       e.addEventListener("click", () => {
+        if (countClicker >= 1) return;
+        countClicker++;
         if (e.classList.contains("correct")) {
           e.classList.add("right");
         } else {
           e.classList.add("wrong");
           document.querySelector("p.correct").classList.add("right");
         }
+        $(".next").removeAttr("disabled");
         clearInterval(qTimeInter);
       });
     });
@@ -60,11 +65,17 @@ continueBtn.addEventListener("click", () => {
   let qTimeInter = setInterval(() => {
     qTime -= 1;
     if (qTime == 0) {
+      document.querySelector(".correct").classList.add("right");
+      countClicker++;
+      $(".next").removeAttr("disabled");
       clearInterval(qTimeInter);
     }
     document.querySelector(".quizTime").innerHTML = `Time ${qTime}`;
-    console.log(qTime);
   }, 1000);
   // Time Per Question
 });
 // Moving to Quiz App
+
+// Moving to the next question
+
+// Moving to the next question
