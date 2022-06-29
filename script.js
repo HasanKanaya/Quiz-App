@@ -25,22 +25,8 @@ let content = `<div class="head">
 ${countQuestion} <button class="next" disabled>Next</button>
 </div>`;
 
-// Make the questions using ES6 by making variables inside each p
-
-// Moving to Quiz App
-let hasan = $(content).hide();
-
-continueBtn.addEventListener("click", () => {
-  $(".shape hr").fadeOut("normal");
-  $(".shape div").fadeOut("normal", function () {
-    $(".shape").empty();
-  });
-  setTimeout(function () {
-    $(".shape").append(hasan);
-    hasan.fadeIn("normal");
-  }, 600);
-
-  // Select Questions
+// Select Opction
+function selectFromQuestions() {
   let countClicker = 0;
   setTimeout(function () {
     let questions = document.querySelectorAll(".shape .middle p.question");
@@ -59,9 +45,7 @@ continueBtn.addEventListener("click", () => {
       });
     });
   }, 602);
-  // Select Questions
 
-  // Time Per Question
   let qTimeInter = setInterval(() => {
     qTime -= 1;
     if (qTime == 0) {
@@ -72,10 +56,150 @@ continueBtn.addEventListener("click", () => {
     }
     document.querySelector(".quizTime").innerHTML = `Time ${qTime}`;
   }, 1000);
-  // Time Per Question
+}
+// Select Opction
+
+// Creating The Shape
+function creatingShape() {
+  let hasan = $(content).hide();
+  $(".shape hr").fadeOut("normal");
+  $(".shape div").fadeOut("normal", function () {
+    $(".shape").empty();
+  });
+  setTimeout(function () {
+    $(".shape").append(hasan);
+    hasan.fadeIn("normal");
+  }, 600);
+}
+// Creating The Shape
+
+continueBtn.addEventListener("click", () => {
+  creatingShape();
+  selectFromQuestions();
+
+  // Next Button
+  setTimeout(() => {
+    document.querySelector(".next").addEventListener("click", function () {
+      qTime = 15;
+      questionText = "Choose The Semantic Element";
+      firstP = "h2";
+      secondP = "a";
+      thirdP = "div";
+      forthP = "header";
+      countQuestion = "2 of 5 Questions";
+      content = `<div class="head">
+<h2>${headerText}</h2>
+<span class="quizTime">Time ${qTime}</span>
+</div>
+<hr />
+<div class="middle">
+<h3>${questionText}</h3>
+<p class="question">${firstP}</p>
+<p class="question">${secondP}</p>
+<p class="question">${thirdP}</p>
+<p class="question correct">${forthP}</p>
+</div>
+<hr />
+<div class="bottom bottomQuiz">
+${countQuestion} <button class="next" disabled>Next</button>
+</div>`;
+
+      creatingShape();
+      selectFromQuestions();
+
+      setTimeout(() => {
+        document.querySelector(".next").addEventListener("click", function () {
+          qTime = 15;
+          questionText = "Choose The Smallest Heading Tag";
+          firstP = "h5";
+          secondP = "h4";
+          thirdP = "h1";
+          forthP = "none of the above";
+          countQuestion = "3 of 5 Questions";
+          content = `<div class="head">
+    <h2>${headerText}</h2>
+    <span class="quizTime">Time ${qTime}</span>
+    </div>
+    <hr />
+    <div class="middle">
+    <h3>${questionText}</h3>
+    <p class="question">${firstP}</p>
+    <p class="question">${secondP}</p>
+    <p class="question">${thirdP}</p>
+    <p class="question correct">${forthP}</p>
+    </div>
+    <hr />
+    <div class="bottom bottomQuiz">
+    ${countQuestion} <button class="next" disabled>Next</button>
+    </div>`;
+
+          creatingShape();
+          selectFromQuestions();
+          setTimeout(() => {
+            document
+              .querySelector(".next")
+              .addEventListener("click", function () {
+                qTime = 15;
+                questionText = "How To Make A New Line";
+                firstP = "br";
+                secondP = "New Line";
+                forthP = "nl";
+                thirdP = "hr";
+                countQuestion = "4 of 5 Questions";
+                content = `<div class="head">
+        <h2>${headerText}</h2>
+        <span class="quizTime">Time ${qTime}</span>
+        </div>
+        <hr />
+        <div class="middle">
+        <h3>${questionText}</h3>
+        <p class="question correct">${firstP}</p>
+        <p class="question">${secondP}</p>
+        <p class="question">${thirdP}</p>
+        <p class="question">${forthP}</p>
+        </div>
+        <hr />
+        <div class="bottom bottomQuiz">
+        ${countQuestion} <button class="next" disabled>Next</button>
+        </div>`;
+                creatingShape();
+                selectFromQuestions();
+                setTimeout(() => {
+                  document
+                    .querySelector(".next")
+                    .addEventListener("click", function () {
+                      qTime = 15;
+                      questionText = "Best Way To Become a Developer";
+                      firstP = "Watch videos or read books";
+                      secondP = "Listen from hasan kanaya";
+                      forthP = "All of the above";
+                      thirdP = "build a lot of projects";
+                      countQuestion = "5 of 5 Questions";
+                      content = `<div class="head">
+              <h2>${headerText}</h2>
+              <span class="quizTime">Time ${qTime}</span>
+              </div>
+              <hr />
+              <div class="middle">
+              <h3>${questionText}</h3>
+              <p class="question">${firstP}</p>
+              <p class="question">${secondP}</p>
+              <p class="question">${thirdP}</p>
+              <p class="question correct">${forthP}</p>
+              </div>
+              <hr />
+              <div class="bottom bottomQuiz">
+              ${countQuestion} <button class="next" disabled>Next</button>
+              </div>`;
+                      creatingShape();
+                      selectFromQuestions();
+                    });
+                }, 602);
+              });
+          }, 602);
+        });
+      }, 602);
+    });
+  }, 602);
+  // Next Button
 });
-// Moving to Quiz App
-
-// Moving to the next question
-
-// Moving to the next question
