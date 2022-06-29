@@ -1,5 +1,6 @@
 let continueBtn = document.querySelector(".shape .bottom .continue");
 let qTime = 15;
+let score = 0;
 let headerText = "Quiz App",
   questionText = "HTML Stands for ?",
   firstP = "Habed Tishreen Mark-up Language",
@@ -35,6 +36,7 @@ function selectFromQuestions() {
         if (countClicker >= 1) return;
         countClicker++;
         if (e.classList.contains("correct")) {
+          score += 20;
           e.classList.add("right");
         } else {
           e.classList.add("wrong");
@@ -142,7 +144,7 @@ ${countQuestion} <button class="next" disabled>Next</button>
                 qTime = 15;
                 questionText = "How To Make A New Line";
                 firstP = "br";
-                secondP = "New Line";
+                secondP = "new line";
                 forthP = "nl";
                 thirdP = "hr";
                 countQuestion = "4 of 5 Questions";
@@ -170,9 +172,9 @@ ${countQuestion} <button class="next" disabled>Next</button>
                     .addEventListener("click", function () {
                       qTime = 15;
                       questionText = "Best Way To Become a Developer";
-                      firstP = "Watch videos or read books";
-                      secondP = "Listen from hasan kanaya";
-                      forthP = "All of the above";
+                      firstP = "watch videos or read books";
+                      secondP = "listen from hasan kanaya";
+                      forthP = "all of the above";
                       thirdP = "build a lot of projects";
                       countQuestion = "5 of 5 Questions";
                       content = `<div class="head">
@@ -193,6 +195,27 @@ ${countQuestion} <button class="next" disabled>Next</button>
               </div>`;
                       creatingShape();
                       selectFromQuestions();
+                      setTimeout(() => {
+                        document
+                          .querySelector(".next")
+                          .addEventListener("click", function () {
+                            if (score >= 60) {
+                              swal({
+                                title: "Good job!",
+                                text: `Your score is ${score}`,
+                                icon: "success",
+                                button: "Close",
+                              });
+                            } else {
+                              swal({
+                                title: "Oops...",
+                                text: `Your score is ${score}`,
+                                icon: "error",
+                                button: "Close",
+                              });
+                            }
+                          });
+                      }, 602);
                     });
                 }, 602);
               });
@@ -202,4 +225,14 @@ ${countQuestion} <button class="next" disabled>Next</button>
     });
   }, 602);
   // Next Button
+});
+
+let exitBtn = document.querySelector(".shape .exit");
+exitBtn.addEventListener("click", function () {
+  swal({
+    title: "Oops...",
+    text: `Nothing is here yet, There will a lot of Quizzes`,
+    icon: "error",
+    button: "Close",
+  });
 });
